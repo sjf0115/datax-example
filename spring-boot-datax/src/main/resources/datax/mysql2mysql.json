@@ -1,0 +1,43 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 4
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "root",
+            "password": "root",
+            "connection": [
+              {
+                "jdbcUrl": ["jdbc:mysql://localhost:3306/test"],
+                "querySql": ["select id, name, age, email from tb_user"]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "mysqlwriter",
+          "parameter": {
+            "username": "root",
+            "password": "root",
+            "writeMode": "insert",
+            "column": ["id","name","age", "email"],
+            "connection": [
+              {
+                "table": [
+                  "tb_user"
+                ],
+                "jdbcUrl": "jdbc:mysql://localhost:3306/test2"
+              }
+            ]
+          }
+        }
+      }
+    ]
+  }
+}
